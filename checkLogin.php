@@ -42,7 +42,10 @@ while ($row = mysql_fetch_array($result)) {
 if($count==1){
 
 
-session_save_path('/home/mgmt/httpdocs/sessions');
+//session_save_path('Applications/MAMP/htdocs/Trace/sessions');
+
+//session_save_path('/home/mgmt/httpdocs/sessions');
+
 session_start();
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"

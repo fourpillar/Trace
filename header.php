@@ -1,6 +1,9 @@
 <?php
 //ini_set('display_errors', 1);
-session_save_path('/home/mgmt/httpdocs/sessions');
+
+//session_save_path('Applications/MAMP/htdocs/Trace/sessions');
+
+//session_save_path('/home/mgmt/httpdocs/sessions');
 session_start();
 //if(!session_is_registered(myusername)){
 //$_SESSION['myusername'] = 'AlexHill';

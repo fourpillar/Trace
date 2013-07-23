@@ -46,11 +46,12 @@
               <th>Postcode</th>
               <th>Main Tel.</th>
               <th>Primary Contact</th>
-              <th></th>
+              <th>Position</th>
               <th>Primary Tel.</th>
               <th>Primary Mob.</th>
               <th>Primary email</th>
               <th>Secondary Contact</th>
+              <th>Position</th>
               <th>Secondary Tel.</th>
               <th>Secondary Mob.</th>
               <th>Secondary email</th>
@@ -76,14 +77,14 @@
         echo '<td>'; echo $row['address_line_1'];echo '</td>';
         echo '<td>'; echo $row['address_line_2'];echo '</td>';
         echo '<td>'; echo $row['postcode'];echo '</td>';
-        echo '<td>'; echo $row['main_tel'];echo '</td>';
-        //echo '<td>'; echo $row['pri_position'];echo'</td>';
+        echo '<td>'; echo $row['main_tel'];echo '</td>';    
         echo '<td>'; echo $row['pri_contact_name'];echo '</td>';
+        echo '<td>'; echo $row['pri_position'];echo'</td>';
         echo '<td>'; echo $row['pri_contact_tel'];echo '</td>';
         echo '<td>'; echo $row['pri_contact_mob'];echo '</td>';
         echo '<td>'; echo $row['pri_contact_email'];echo '</td>';
-        //echo '<td>'; echo $row['sec_position'];echo '</td>';
         echo '<td>'; echo $row['sec_contact_name'];echo '</td>';
+        echo '<td>'; echo $row['sec_position'];echo '</td>';
         echo '<td>'; echo $row['sec_contact_tel'];echo '</td>';
         echo '<td>'; echo $row['sec_contact_mob'];echo '</td>';
         echo '<td>'; echo $row['sec_contact_email'];echo '</td>';
