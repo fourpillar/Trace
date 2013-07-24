@@ -71,7 +71,7 @@ if($action == 'newtask'){
                 VALUES (
                 '$client', '$account_manager', '$introducer',
                 '$value', $stage, '$opp_summary',
-                '$terms_summary', '$next_task', $probability,
+                '$terms_summary', '$next_task', '$probability',
                 '$start_date', '$notes', '$user')
                 ") or die ('Error: '.mysql_error ());
 
