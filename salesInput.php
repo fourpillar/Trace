@@ -9,7 +9,7 @@ if($action == 'newtask'){
     $task_owner = $_POST['task_owner'];
     $summary = $_POST['summary'];
     $due_date = $_POST['due_date'];
-    $notes = $_POST['notes'];
+    $notes = mysql_real_escape_string($_POST['notes']);
     $user = $_POST['user'];
 
     mysql_query("INSERT INTO xsales_task (client, account_manager, task_owner,
@@ -38,7 +38,7 @@ if($action == 'newtask'){
     $task_owner = $_POST['task_owner'];
     $summary = $_POST['summary'];
     $due_date = $_POST['due_date'];
-    $notes = $_POST['notes'];
+    $notes = mysql_real_escape_string($_POST['notes']);
 
     mysql_query("UPDATE xsales_task SET
                  client='$client',
@@ -64,7 +64,7 @@ if($action == 'newtask'){
     $next_task = $_POST['next_task'];
     $probability = $_POST['probability'];
     $start_date = $_POST['start_date'];
-    $notes = $_POST['notes'];
+    $notes = mysql_real_escape_string($_POST['notes']);
     $user = $_POST['user'];
 
     mysql_query("INSERT INTO xsales_opportunity (client, account_manager, introducer, value, stage, opportunity_summary, terms_summary, next_task, probability, start_date, notes, user_created)
@@ -100,7 +100,7 @@ if($action == 'newtask'){
     $next_task = $_POST['next_task'];
     $probability = $_POST['probability'];
     $start_date = $_POST['start_date'];
-    $notes = $_POST['notes'];
+    $notes = mysql_real_escape_string($_POST['notes']);
 
    mysql_query("UPDATE xsales_opportunity SET
                 client='$client',
@@ -135,7 +135,7 @@ $secondary_tel=$_POST['secondary_tel'];
 $secondary_mob=$_POST['secondary_mob'];
 $secondary_email=$_POST['secondary_email'];
 $commission_level=$_POST['commission_level'];
-$notes=$_POST['notes'];
+$notes=mysql_real_escape_string($_POST['notes']);
 
 
         mysql_query("INSERT INTO xsales_introducer (name,
@@ -192,7 +192,7 @@ $sector=$_POST['sector'];
 $no_sites=$_POST['no_sites'];
 $no_meters=$_POST['no_meters'];
 $introducer=$_POST['introducer'];
-$notes=$_POST['notes'];
+$notes=mysql_real_escape_string($_POST['notes']);
 $pri_position=$_POST['pri_position'];
 $sec_position=$_POST['sec_position'];
 
@@ -277,7 +277,7 @@ $sec_position=$_POST['sec_position'];
     $secondary_mob=$_POST['secondary_mob'];
     $secondary_email=$_POST['secondary_email'];
     $commission_level=$_POST['commission_level'];
-    $notes=$_POST['notes'];
+    $notes=mysql_real_escape_string($_POST['notes']);
 
        mysql_query("UPDATE xsales_introducer SET
                     name='$name',
@@ -321,7 +321,7 @@ $sec_position=$_POST['sec_position'];
         $no_sites=$_POST['no_sites'];
         $no_meters=$_POST['no_meters'];
         $introducer=$_POST['introducer'];
-        $notes=$_POST['notes'];
+        $notes=mysql_real_escape_string($_POST['notes']);
         $pri_position=$_POST['pri_position'];
         $sec_position=$_POST['sec_position'];
         

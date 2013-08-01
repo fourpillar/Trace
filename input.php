@@ -66,7 +66,7 @@ $action = $_GET['form'];
                     if ($action == 'addnote'){
 
                         $id = $_GET['id'];
-                        $value = $_POST['notes'];
+                        $value = mysql_real_escape_string($_POST['notes']);
                         $category = $_GET['type'];
 
 

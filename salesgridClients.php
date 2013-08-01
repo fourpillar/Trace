@@ -124,7 +124,7 @@
                       <div class="label">Number of sites </div><input type="text" class="input" name="no_sites" value="'; echo $row['no_sites']; echo'"/><br />
                       <div class="label">Number of meters </div><input type="text" class="input" name="no_meters" value="'; echo $row['no_meters']; echo'"/><br />
                       <div class="label">Introducer </div><select class="input" name="introducer">'; listIntroducer($row['introducer']); echo'</select><br />
-                      <div class="label">Notes </div><textarea rows="10" cols="35" name="notes">'; echo $notes; echo'</textarea>
+                      <div class="label">Notes </div><textarea rows="10" cols="35" name="notes">'; echo $row['notes']; echo'</textarea>
                       <input type="submit" name="submit" value="Edit" class="formButton">
                       </form>
 
