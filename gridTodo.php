@@ -63,7 +63,7 @@
 
         echo '</tr>';
         echo '<tr class="row-details expand-child"><td colspan="6"><style>#todo_sliding_div_'; echo $i;
-        echo '{display:none;}</style>
+        echo '{display:none; vertical-align:top;}</style>
               <div id="todo_sliding_div_'; echo $i; echo'">
 
          <script language="JavaScript" type="text/javascript">
@@ -73,16 +73,16 @@
         </script>
 
               <form action="mgnt.php?form=edittodo&id='; echo $row['id']; echo'" method="post">
-              Task <input type="text" class="input" name="task" value="'; echo $row['task']; echo '"/>
-              Client
+              <textarea rows="10" cols="35" name="task" class="input">'; echo $row['task']; echo '</textarea><br />
+              
 
               <select class="input" name="client">';
               foreach($client_access_names_b as $clientname){
               echo '<option'.($clientname==$row['client']? ' selected' : '').'>'; echo $clientname; echo '</option>';
               }
-              echo '</select>
+              echo '</select><br />
                   
-              Due <input type="text" class="input" id="editdatepicker'; echo $i; echo'" name="due" value="'; echo $row['due_date']; echo '"/><br />
+               <input type="text" class="input" id="editdatepicker'; echo $i; echo'" name="due" value="'; echo $row['due_date']; echo '"/><br />
 
               <input type="submit" name="submit" value="Edit" class="formButton">
               </form>

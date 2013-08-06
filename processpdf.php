@@ -19,6 +19,7 @@ $contract_end_date = $_GET['contractenddate'];
 $account_ref = $_GET['accountref'];
 $today = $_GET['today'];
 $mpan = $_GET['mpan'];
+$billingline1 = $_GET['billingline1'];
 
 //$not_pdf_query = mysql_query("SELECT * FROM statistics_contract WHERE id=$id") or die ('Error: '.mysql_error ());
 //
@@ -39,7 +40,10 @@ $not_pdf_doc .= '</p>
 
 <p><strong>Notice of Termination of Existing Supply Agreement</strong></p>
 
-<p>Please accept this letter as formal notice of termination of the energy supply agreement for the following supply.</p>
+<p>Please accept this letter as formal notice of termination of the energy supply agreement for the following supply for our client ';
+
+$not_pdf_doc .= $billingline1;
+$not_pdf_doc .= '.</p>
 
 <table border="1" cellspacing="0">
 <tr><td><strong>Account</strong></td><td><strong>Supply Number</strong></td><td><strong>Contract End Date</strong></td></tr>

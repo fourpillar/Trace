@@ -14,6 +14,7 @@
                                         statistics_contract.supplier AS supplierName,
                                         statistics_contract.account_reference AS accountRef,
                                         statistics_contract.notice_of_termination_days AS terminationDays,
+                                        statistics_contract.billing_address_line1 AS billingLine1,
                                         MAX(statistics_contract.contract_end_date) AS contractEndDate,
                                         MAX(statistics_meterreading.date) AS lastMeterReadingDate,
                                         statistics_meterreading.reading AS lastMeterReading,
@@ -187,7 +188,7 @@ if ($row['isSent'] == '1'){
 
         echo '<a href ="#" class="largeButton" target="name"
               onclick="window.open(\'processpdf.php?form=createpdf&type=not&id='; echo $row['contractId']; echo'&supplier='; echo $row['supplierName'];
-              echo '&contractenddate='; echo $row['contractEndDate']; echo '&accountref='; echo $row['accountRef']; echo '&today='; echo $today;echo '&mpan='; echo $row['mpanNumber'];
+              echo '&contractenddate='; echo $row['contractEndDate']; echo '&billingline1='; echo $row['billingLine1']; echo '&accountref='; echo $row['accountRef']; echo '&today='; echo $today;echo '&mpan='; echo $row['mpanNumber'];
               echo'\',\'name\',\'height=600, width=800,toolbar=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=yes\'); return false;"
               >NOT Template</a>';
         echo '<br /><br /></div>';
