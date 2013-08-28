@@ -45,7 +45,7 @@ echo '
 <div id="invoicing_amber_counter" class="warningCounter"> <img src="images/orange_icon.png" /> </div>
 <div id="invoicing_green_counter" class="warningCounter"> <img src="images/green_icon.png" /> </div>
 <br />
-<div id="procurement_red_counter" class="warningCounter"><a href="#procurement-grid" style="color:green;">Procurement: </a> <img src="images/red_icon.png" /> </div>
+<div id="procurement_red_counter" class="warningCounter"><a href="#procurement-grid" style="color:green;">Proc.: </a> <img src="images/red_icon.png" /> </div>
 <div id="procurement_amber_counter" class="warningCounter"> <img src="images/orange_icon.png" /> </div>
 <div id="procurement_green_counter" class="warningCounter"> <img src="images/green_icon.png" /> </div>
 <br />

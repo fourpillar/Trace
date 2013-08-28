@@ -59,7 +59,7 @@
             $account_manager_b[] = $row['username'];
 }
 
-        $new_client_a = mysql_query("SELECT * FROM xsales_client WHERE active=1");
+        $new_client_a = mysql_query("SELECT * FROM xsales_client WHERE active=1 ORDER BY name ASC");
 
 // Build array
         $new_client_b = array();

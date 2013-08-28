@@ -112,7 +112,7 @@ $action = $_GET['form'];
 
                     if ($action == 'addtodo'){
 
-                        $task = $_POST['task'];
+                        $task = mysql_real_escape_string($_POST['task']);
                         $client = $_POST['client'];
                         $due = $_POST['due'];
 
