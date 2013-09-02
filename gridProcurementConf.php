@@ -148,26 +148,6 @@ $("#proc_conf").validate();
         <div id="taskButtons">
         <strong>Tasks:</strong><br />';
 
-
-//if ($row['isSent'] == '1'){
-//
-//        echo '<a href ="mgnt.php?form=updatesent&type=proc&value=0&id='; echo $row['siteId']; echo '" class="largeButtonRed">Mark not sent (Supplier)</a>';
-//
-//        }else{
-//
-//        echo '<a href ="mgnt.php?form=updatesent&type=proc&value=1&id='; echo $row['siteId']; echo '" class="largeButton">Mark sent (Supplier)</a>';
-//
-//        }
-//if ($row['isSentClient'] == '8'){
-//
-//        echo '<a href ="mgnt.php?form=updatesentclient&type=proc&value=7&id='; echo $row['siteId']; echo '" class="largeButtonRed">Mark not sent (Client)</a>';
-//
-//        }else{
-//
-//        echo '<a href ="mgnt.php?form=updatesentclient&type=proc&value=8&id='; echo $row['siteId']; echo '" class="largeButton">Mark sent (Client)</a>';
-//
-//        }
-
                 if (isset($row['docPath'])){
             echo '<a href ="upload/'; echo $row['docPath']; echo '" class="largeButton" target="blank">View Document</a>';
             echo  '<a href ="mgnt.php?form=removedoc&type=proc&id='; echo $row['siteId']; echo '" class="largeButtonRed">Remove Document</a>';

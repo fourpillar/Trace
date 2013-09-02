@@ -21,11 +21,12 @@
                                         statistics_contract.account_reference AS accountRef,
                                         statistics_contract.has_amr AS hasAMR,
                                         statistics_contract.is_hh AS isHH,
+                                        statistics_contract.id AS contractId,
                                         statistics_contract.kva_charge_type AS kvaChargeType,
-                                        xmgnt_task.doc_path AS docPath,
+                                        xmgnt_task.notes AS taskNotes,
                                         MAX(statistics_contract.contract_end_date) AS contractEndDate
                                         FROM statistics_contract
-                                        LEFT JOIN xmgnt_task ON xmgnt_task.contract_id=statistics_contract.id
+                                        LEFT JOIN xmgnt_task ON xmgnt_task.procurement_contract_id=statistics_contract.id
                                         INNER JOIN statistics_meter ON statistics_meter.id=statistics_contract.meter_id
                                         INNER JOIN building_site ON building_site.id=statistics_meter.building_id
                                         INNER JOIN company_portfolio ON company_portfolio.id=building_site.portfolio_id
@@ -39,19 +40,16 @@
                                         ORDER BY statistics_contract.contract_end_date ASC
                                         ") or die ('Error: '.mysql_error ());
 
-
-//	contract page --> HH/AMR/NHH	KVA (agreed capacity)	NOT Accepted 	Annual Usage	Day Usage	Night Usage	Site Address 1	Site Address 2	City	County	Postcode
-
         
         echo '<table class="grid tablesorter"><thead>
               <tr><th>Client</th><th>Site Name</th><th>Account Ref.</th><th>Supplier</th><th>MPAN/MPRN</th><th>Meter</th>
               <th>Profile</th><th>MTC</th><th>LLF</th><th>Contract End Date</th><th>..Countdown</th><th>Confirmed</th>
               <th>HH/AMR/NHH</th><th>KVA (agreed cpacity)</th>';
-          //<th>Annual Usage</th><th>Day Usage</th><th>Night Usage</th>
               echo '<th>Site Address 1</th><th>Site Address 2</th><th>City</th><th>County</th><th>Postcode</th>
-              <th class="not-sortable"></th></tr></thead>';
+              <th class="not-sortable"></th><th class="not-sortable"></th></tr></thead>';
 
         echo '<tbody>';
+        $i = 1;
         while($row = mysql_fetch_array($procurement_a))
         {
         echo '<tr>';
@@ -82,15 +80,13 @@
             echo '<td>NHH</td>';
         }
 
-
-
          echo '<td>'; echo $row['kvaChargeType']; echo'</td>';
          echo '<td>'; echo $row['line1']; echo'</td>';
          echo '<td>'; echo $row['line2']; echo'</td>';
          echo '<td>'; echo $row['city']; echo'</td>';
          echo '<td>'; echo $row['county']; echo'</td>';
          echo '<td>'; echo $row['postcode']; echo'</td>';
-
+         echo '<td><a href="#" class="show_hide smallButton" rel="#sliding_procurement_div_'; echo $i; echo'">+</a></td>';
 
           $proc_task_created_date = strtotime("-120 days", strtotime($row['contractEndDate']));
           $proc_task_amber_date = strtotime("-106 days", strtotime($row['contractEndDate']));
@@ -103,10 +99,43 @@
         } else {
             echo '<td><div class="procurement_green_warning"></div></td>';
         }
-
-
         echo '</tr>';
-        }
+
+        echo '<tr class="row-details expand-child"><td colspan="21"><style>#sliding_procurement_div_'; echo $i;
+
+        //Make sure the last edited div remains open on refresh
+
+//        if($loa_div_to_open == $row['siteId']){
+//
+//        //normally block
+//        echo'{display:block;}</style>
+//              <div id="sliding_proc_div_'; echo $i; echo'">';
+//        }else{
+            echo '{display:none;}</style>
+              <div id="sliding_procurement_div_'; echo $i; echo'">';
+//        }
+
+echo'
+<div id="addNotes">
+
+
+<form action="mgnt.php?form=addnote&type=procurement&id='; echo $row['contractId']; echo'" method="post">
+        <textarea rows="10" cols="50" name="notes">'; echo $row ['taskNotes']; echo' </textarea><br />
+                <input type="submit" name="submit" value="Save" class="formButton">
+                </form>';        echo '<br /></div>';
+
+echo '<div id="history"><strong> Task History: </strong><br />';
+
+          foreach($procurement_f as $procurementtaskhistory){
+              if ($procurementtaskhistory['contractId'] == $row['contractId']){
+                  echo $procurementtaskhistory['user']; historyType($procurementtaskhistory['eventType']); echo '<i>'; echo $procurementtaskhistory['eventTime']; echo '</i>'; echo '<br />';
+              }
+
+              }
+echo '</div>';
+
+        $i ++; }
+        
         echo '</tbody></table>';
         echo '</div>';
         // End Procurement grid     --------------------------

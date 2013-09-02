@@ -107,13 +107,41 @@
         $proc_d= implode("', '", $proc_c);
 
 
-        $proc_e = mysql_query("SELECT * FROM xmgnt_task_history WHERE proc_contract_id IS NOT NULL
+        $proc_e = mysql_query("SELECT * FROM xmgnt_task_history WHERE proc_contract_id IS NOT NULL ORDER BY datetime DESC
 
                              ") or die ('Error: '.mysql_error ());
 
-//IN ('$proc_d') ORDER BY datetime DESC
         while($row = mysql_fetch_array($proc_e)){
             $proc_f[] = array("contractId"=>$row['proc_contract_id'],"eventType"=>$row['event_type'],
+                             "user"=>$row['user'], "eventTime"=>$row['datetime']
+                            );
+        }
+
+                //Regular procurement grid history array 
+         $procurement_b = mysql_query("SELECT
+                                        statistics_contract.id AS contractId
+                                        FROM statistics_contract
+                                        INNER JOIN statistics_meter ON statistics_meter.id=statistics_contract.meter_id
+                                        INNER JOIN building_site ON building_site.id=statistics_meter.building_id
+                                        INNER JOIN company_portfolio ON company_portfolio.id=building_site.portfolio_id
+                                        INNER JOIN company_company ON company_company.id=company_portfolio.company_id
+                                        WHERE company_portfolio.company_id IN ('$client_access_c')
+                                        ") or die ('Error: '.mysql_error ());
+
+         $procurement_b = array();
+        while($row = mysql_fetch_array($procurement_b)){
+            $procurement_c[] = $row['contractId'];
+        }
+
+        $procurement_d= implode("', '", $procurement_c);
+
+
+        $procurement_e = mysql_query("SELECT * FROM xmgnt_task_history WHERE procurement_contract_id IS NOT NULL ORDER BY datetime DESC
+
+                             ") or die ('Error: '.mysql_error ());
+
+        while($row = mysql_fetch_array($procurement_e)){
+            $procurement_f[] = array("contractId"=>$row['procurement_contract_id'],"eventType"=>$row['event_type'],
                              "user"=>$row['user'], "eventTime"=>$row['datetime']
                             );
         }

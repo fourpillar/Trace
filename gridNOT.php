@@ -129,7 +129,9 @@
 
         //Make sure the last edited div remains open on refresh
 
-        if($div_to_open == $row['contractId']){
+        $check = $_GET['type'];
+
+        if($div_to_open == $row['contractId'] && $check != 'procurement'){
 
 
         echo'{display:block;}</style>

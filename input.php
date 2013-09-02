@@ -83,6 +83,9 @@ $action = $_GET['form'];
                          $type = 'proc_contract_id';
                          $task = 4;
                          $mark_complete = $_POST['is_task_done'];
+                        }else if($category == 'procurement'){
+                         $type = 'procurement_contract_id';
+                         $task = 5;
                         }
 
 
